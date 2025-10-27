@@ -1,0 +1,14 @@
+[project]
+name = "traider-algoritmico-python"
+version = "0.1.0"
+description = "Repositorio para estudio de finanzas"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "numpy>=2.3.4",
+    "pandas>=2.3.3",
+    "matplotlib>=3.10.7",
+    "scikit-learn>=1.7.2",
+    "datetime>=5.5",
+    "yfinance>=0.2.66"
+]
