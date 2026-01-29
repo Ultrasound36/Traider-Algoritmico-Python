@@ -20,3 +20,9 @@ build/
 .DS_Store
 # VSCode
 .vscode/
+
+#Ideas
+.idea/
+
+/CSV
+.ruff_cache/

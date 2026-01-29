@@ -10,5 +10,5 @@ dependencies = [
     "matplotlib>=3.10.7",
     "scikit-learn>=1.7.2",
     "datetime>=5.5",
-    "yfinance>=0.2.66"
+    "yfinance>=0.2.66",
 ]

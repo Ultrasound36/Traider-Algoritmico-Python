@@ -3,7 +3,6 @@ import os
 import pandas as pd
 import yfinance as yf
 import matplotlib.pyplot as plt
-import matplotlib.style
 
 plt.style.use('ggplot')
 
@@ -12,7 +11,7 @@ file_path = os.path.join(os.path.dirname(__file__), "EUR-USD_Day_2025-09-01_to_2
 asset = 'EURUSD=X'
 arrAssets = ['EURUSD=X', 'EURGBP=X', 'AUDUSD=X', 'NZDUSD=X']    
 start_date = '2024-10-01'
-end_date = '2025-10-01'
+end_date = '2026-01-31'
 interval = '1d'
 period = '2y'
 close_price = pd.DataFrame()
@@ -30,7 +29,7 @@ def print_data_simple_yahoo(asset, interval, start_date, end_date):
         print(f"Error al cargar los datos: {e}")
         return None
 
-#data = load_data(asset, interval, start_date, end_date)
+data = print_data_simple_yahoo(asset, interval, start_date, end_date)
 
 def print_graph_array_yahoo(arrAssets, interval, start_date, end_date):
     try:
@@ -52,7 +51,7 @@ def print_graph_array_yahoo(arrAssets, interval, start_date, end_date):
         print(f"Error al mostrar la información de los datos: {e}")
     return None
 
-#data = print_data_info(arrAssets, interval, start_date, end_date)
+#data = print_graph_array_yahoo(arrAssets, interval, start_date, end_date)
 
 def print_data_diccionary_yahoo(arrAssets, interval, period):
     try:
@@ -109,4 +108,29 @@ def cast_and_print_types():
         print(f"Error al mostrar la información de los datos: {e}")
     return None
 
-data = cast_and_print_types()
+#data = cast_and_print_types()
+
+def download_and_save_yahoo_data(arrAssets, start_date, end_date, interval):
+    """
+    Descarga datos de Yahoo Finance para una lista de activos y los guarda en archivos CSV
+    en la carpeta 'CSV' del directorio del proyecto
+    """
+    csv_dir = os.path.join(os.path.dirname(__file__), "CSV")
+    os.makedirs(csv_dir, exist_ok=True)
+    try:
+        for ticker in arrAssets:
+            print(f"Descargando datos de {ticker}...")
+            df = yf.download(ticker, start=start_date, end=end_date, interval=interval, auto_adjust=True)
+            if not df.empty:
+                tipo_divisa = f"{ticker[:3]}-{ticker[3:6]}"
+                file_name = f"{tipo_divisa}_{start_date}_to_{end_date}.csv"
+                file_path = os.path.join(csv_dir, file_name)
+                df.to_csv(file_path)
+                print(f"Datos de {ticker} guardados en {file_path}")
+            else:
+                print(f"No se encontraron datos para {ticker}")
+    except Exception as e:
+        print(f"Error al descargar o guardar los datos: {e}")
+
+# Llamada a la función con las variables definidas
+download_and_save_yahoo_data(arrAssets, start_date, end_date, interval)

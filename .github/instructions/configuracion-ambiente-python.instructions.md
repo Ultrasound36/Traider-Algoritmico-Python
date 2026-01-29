@@ -9,13 +9,13 @@
 
 ## Gestión de Dependencias
 
-- Utilizar un entorno virtual para instalar las dependencias del proyecto
-- Utilizar pip para instalar las dependencias del proyecto
+- Utilizar un entorno virtual para instalar las dependencias del proyecto "uv"
+- Utilizar "uv" para instalar las dependencias del proyecto
 - Utilizar un archivo requirements.txt para listar las dependencias del proyecto
 
 ## Configuración del Proyecto
 
-- Utilizar un archivo .venv para almacenar las variables de entorno del proyecto
+- Utilizar un archivo .venv para almacenar las variables de entorno del proyecto "uv"
 - Utilizar un archivo .gitignore para ignorar los archivos y carpetas que no deben ser versionados
 
 ## Calidad de Código
