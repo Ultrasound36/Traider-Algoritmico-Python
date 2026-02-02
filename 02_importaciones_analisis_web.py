@@ -29,29 +29,34 @@ def print_data_simple_yahoo(asset, interval, start_date, end_date):
         print(f"Error al cargar los datos: {e}")
         return None
 
-data = print_data_simple_yahoo(asset, interval, start_date, end_date)
+#data = print_data_simple_yahoo(asset, interval, start_date, end_date)
 
-def print_graph_array_yahoo(arrAssets, interval, start_date, end_date):
+def print_graph_asset_yahoo(asset, interval, start_date, end_date):
     try:
-        for ticker in arrAssets:
-            df = yf.download(ticker, start=start_date, end=end_date, interval=interval, auto_adjust=True)
-            # Verifica si existe 'Adj Close', si no usa 'Close'
-            if 'Adj Close' in df.columns:
-                close_price[ticker] = df['Adj Close']
-            elif 'Close' in df.columns:
-                close_price[ticker] = df['Close']
-            else:
-                print(f"No se encontraron datos de cierre para {ticker}")
+        df = yf.download(asset, start=start_date, end=end_date, interval=interval, auto_adjust=True)
+        # Verifica si existe 'Adj Close', si no usa 'Close'
+        if 'Adj Close' in df.columns:
+            close_price[asset] = df['Adj Close']
+        elif 'Close' in df.columns:
+            close_price[asset] = df['Close']
+        else:
+            print(f"No se encontraron datos de cierre para {asset}")
         #print(close_price.info())
-        close_price["EURUSD=X"].plot(figsize=(15, 6))
-        plt.show()
+        tipo_divisa = f"{asset[:3]}-{asset[3:6]}"
+        os.makedirs("Graficos", exist_ok=True)
+        close_price[asset].plot(figsize=(15, 6))
+        plt.title(f"Precio de Cierre [divisa: {tipo_divisa}] :: [start-date: {start_date}] to [end-date: {end_date}]")
+        plt.ylabel("Precio de Cierre")
+        plt.xlabel("Fecha")
+        plt.savefig(os.path.join("Graficos", f"{tipo_divisa}-{start_date}_to_{end_date}.png"))
+        """ plt.show() """
 
         return close_price
     except Exception as e:
         print(f"Error al mostrar la información de los datos: {e}")
     return None
 
-#data = print_graph_array_yahoo(arrAssets, interval, start_date, end_date)
+data = print_graph_asset_yahoo(asset, interval, start_date, end_date)
 
 def print_data_diccionary_yahoo(arrAssets, interval, period):
     try:
@@ -64,7 +69,7 @@ def print_data_diccionary_yahoo(arrAssets, interval, period):
     except Exception as e:
         print(f"Error al mostrar la información de los datos: {e}")
     return None
-#data = print_data_diccionary_yahoo(arrAssets, interval, period)
+data = print_data_diccionary_yahoo(arrAssets, interval, period)
 
 def print_and_pick_dataframe():
     df = pd.DataFrame(data=
@@ -108,7 +113,7 @@ def cast_and_print_types():
         print(f"Error al mostrar la información de los datos: {e}")
     return None
 
-#data = cast_and_print_types()
+data = cast_and_print_types()
 
 def download_and_save_yahoo_data(arrAssets, start_date, end_date, interval):
     """
@@ -133,4 +138,4 @@ def download_and_save_yahoo_data(arrAssets, start_date, end_date, interval):
         print(f"Error al descargar o guardar los datos: {e}")
 
 # Llamada a la función con las variables definidas
-download_and_save_yahoo_data(arrAssets, start_date, end_date, interval)
+#download_and_save_yahoo_data(arrAssets, start_date, end_date, interval)
