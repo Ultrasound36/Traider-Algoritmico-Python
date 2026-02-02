@@ -25,4 +25,5 @@ build/
 .idea/
 
 /CSV
+/Graficos
 .ruff_cache/
