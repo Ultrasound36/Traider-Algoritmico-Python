@@ -43,7 +43,7 @@ def print_graph_asset_yahoo(asset, interval, start_date, end_date):
             print(f"No se encontraron datos de cierre para {asset}")
         #print(close_price.info())
         tipo_divisa = f"{asset[:3]}-{asset[3:6]}"
-        os.makedirs("Graficos", exist_ok=True)
+        os.makedirs("Gráficos", exist_ok=True)
         close_price[asset].plot(figsize=(15, 6))
         plt.title(f"Precio de Cierre [divisa: {tipo_divisa}] :: [start-date: {start_date}] to [end-date: {end_date}]")
         plt.ylabel("Precio de Cierre")

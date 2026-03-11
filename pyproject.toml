@@ -11,4 +11,6 @@ dependencies = [
     "scikit-learn>=1.7.2",
     "datetime>=5.5",
     "yfinance>=0.2.66",
+    "mplfinance>=0.12.10b0",
+    "plotly>=6.6.0",
 ]
