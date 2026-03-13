@@ -1,6 +1,6 @@
 import pandas as pd
 import yfinance as yf
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plta
 
 asset = 'EURUSD=X'
 arrAssets = ['EURUSD=X', 'EURGBP=X', 'AUDUSD=X', 'NZDUSD=X']    
