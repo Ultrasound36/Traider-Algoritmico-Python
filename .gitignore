@@ -27,3 +27,4 @@ build/
 /CSV
 /Graficos
 .ruff_cache/
+uv.lock
