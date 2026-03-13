@@ -13,4 +13,8 @@ dependencies = [
     "yfinance>=0.2.66",
     "mplfinance>=0.12.10b0",
     "plotly>=6.6.0",
+    "python-dotenv>=1.2.2",
+    "massive",
+    "alpha_vantage",
+    "polygon-api-client"
 ]

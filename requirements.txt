@@ -18,3 +18,7 @@ urllib3==2.6.3
 yfinance
 mplfinance
 plotly
+python-dotenv
+massive
+alpha_vantage
+polygon-api-client
