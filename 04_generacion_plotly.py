@@ -155,8 +155,11 @@ def download_and_save_polygon_data(asset, start_date, end_date):
     except Exception as e:
         print(f"Error al descargar o guardar los datos: {e}")
 
-#data = load_data(asset, start_date, end_date)
+data = load_data(asset, start_date, end_date)
 
+
+
+"""
 client = RESTClient(api_polygon)
 
 # Parsear el asset para obtener from_symbol y to_symbol (e.g., 'EURUSD=X' -> 'EUR', 'USD')
@@ -172,7 +175,7 @@ for a in client.list_aggs(ticker=ticker, multiplier=1, timespan="minute", from_=
     aggs.append(a)
 print(f"List Aggregates (Bars): ", aggs)
 
-# Get Last Trade
+ # Get Last Trade
 trade = client.get_last_trade(ticker=ticker)
 print(f"Get Last Trade: ", trade)
 
@@ -188,4 +191,4 @@ print(f"Get Last Quote: ", quote)
 # List Quotes
 quotes = client.list_quotes(ticker=ticker, timestamp="2025-01-04")
 for quote in quotes:
-    print(f"List Quotes", quote)
+    print(f"List Quotes", quote) """
