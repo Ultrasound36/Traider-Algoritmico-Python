@@ -24,7 +24,6 @@ build/
 #Ideas
 .idea/
 
-/CSV
-/Graficos
+/src/data/*.csv
+/src/data/*.png
 .ruff_cache/
-uv.lock
